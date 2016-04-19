@@ -1,0 +1,19 @@
+<!doctype html>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4">
+      <form class="form-signin" role="form" ng-submit="signup(credentials)" novalidate>
+          <h2 class="form-signin-heading">Sign up </h2>
+          <div class="alert alert-danger animate-hide" ng-show="alertMessage">{{alertMessage}}</div>
+          <input type="email" class="form-control" ng-model="credentials.email" placeholder="Email address" required>
+          <br><input type="password" class="form-control" ng-model="credentials.password" placeholder="Password" required>
+          <br><button class="btn btn-lg btn-primary btn-block" type="submit">Signup</button>
+      </form>
+    </div>
+  </div>
+
+
+<hr>
+<p> Already have an account? <a href="#/login">Login</a></p>
+</div>

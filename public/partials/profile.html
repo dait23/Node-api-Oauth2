@@ -1,0 +1,77 @@
+<div class="container col-lg-offset-1 col-lg-10">
+<div class="page-header">
+      <h1>WELCOME</h1>
+</div>
+<ul class="nav nav-tabs">
+    <li><a href="#/main">Home</a></li>
+    <li class="active"><a href="#/profile">Profile</a></li>
+    <li><a href='#/logout'>Logout</a></li>
+</ul>
+<hr>
+<div class="container">
+  <div class="alert alert-danger animate-hide" ng-show="alertMessage">{{alertMessage}}</div>
+  <div class="row">
+    <div class="col-md-3">
+      <h4><span class="fa fa-user"></span> Local Account</h4>
+      <div ng-show="profile.local.email">
+      <p>
+          <strong>id</strong>: {{profile._id}}<br>
+          <strong>email</strong>: {{profile.local.email}}<br>
+          <!--
+          <strong>password</strong>: {{profile.local.password}}
+          -->
+      </p>
+      </div>
+      <div class="btn-group">
+          <a ng-click="disconnectAccount('local')" class="btn btn-default" ng-show="profile.local.email">Disconnect </a>
+          <a ng-click="connectLocalAccount()" class="btn btn-default" ng-hide="profile.local.email">Connect with local account</a>
+      </div>
+
+    </div>
+    <div class="col-md-3">
+      <!-- local account -->
+      <h4><span class="fa fa-user"></span> Twitter Account</h4>
+      <p ng-if="profile.twitter.token">
+          <strong>id</strong>: {{profile.twitter.id}}<br>
+          <!--
+          <strong>token</strong>: {{profile.twitter.token}}<br>
+          <strong>tokenSecret</strong>: {{profile.twitter.tokenSecret}}<br>
+          -->
+          <strong>display name</strong>: {{profile.twitter.displayName}}<br>
+          <strong>photo</strong>: <img src={{profile.twitter.photo}} />
+      </p>
+      <div class="btn-group">
+          <a class='btn btn-info disabled'><i class="fa fa-twitter" style="width:16px; height:17px"></i></a>
+          <a class='btn btn-info ' ng-click="disconnectAccount('twitter')" style="width:12em" ng-show="profile.twitter.token"> Disconnect with Twitter</a>
+          <a class='btn btn-info ' ng-click="connectSocialAccount('twitter')"  style="width:12em" ng-hide="profile.twitter.token"> Connect with Twitter</a>
+      </div>
+
+    </div>
+    <div class="col-md-3">
+
+      <h4><span class="fa fa-user"></span> Facebook Account</h4>
+      <p ng-show="profile.facebook.token">
+          <strong>id</strong>: {{profile.facebook.id}}<br>
+          <!--
+          <strong>token</strong>: {{profile.facebook.token}}<br>
+          <strong>refresh token</strong>: {{profile.facebook.refreshToken}}<br>
+          -->
+          <img src={{profile.facebook.picture}} alt=""><br>
+          <img src={{profile.facebook.cover}} alt="" width="200"><br>
+          <strong>display name</strong>: {{profile.facebook.displayName}}<br>
+          <strong>email</strong>: {{profile.facebook.email}}<br>
+          <strong>Gender</strong>: {{profile.facebook.gender}}<br>
+          <strong>Bio</strong>: {{profile.facebook.bio}}<br>
+          <strong>Interest Article</strong>: {{profile.interested_by}} <br>
+      </p>
+      <div class="btn-group">
+          <a class='btn btn-primary disabled'><i class="fa fa-facebook" style="width:16px; height:17px"></i></a>
+          <a class='btn btn-primary ' ng-click="disconnectAccount('facebook')" style="width:12em" ng-show="profile.facebook.email"> Disconnect with Facebook</a>
+          <a class='btn btn-primary ' ng-click="connectSocialAccount('facebook')" style="width:12em" ng-hide="profile.facebook.email"> Connect with Facebook</a>
+      </div>
+
+
+    </div>
+</div>
+
+</div>

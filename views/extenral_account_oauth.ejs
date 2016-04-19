@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Social Login Authentication</title>
+</head>
+<body>
+<script type="text/javascript">
+    var type = '<%= type %>';
+    var state = '<%= state %>';
+    var data = JSON.parse('<%-JSON.stringify(data)%>');
+
+    function getResult() {
+        return { 
+            type: type,
+            state: state,
+            data: data
+        };
+    };
+
+    if (window.opener) {
+        window.opener.focus();
+
+        if (window.opener.authState) {
+            window.opener.authState(type, state, data); 
+        }
+        window.close();
+    }
+</script>
+</body>
+</html>

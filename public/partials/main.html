@@ -1,0 +1,50 @@
+<div class="container col-lg-offset-2 col-lg-8">
+<div class="page-header">
+      <h1>WELCOME</h1>
+</div>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#/main">Home</a></li>
+    <li><a href="#/profile">Profile</a></li>
+    <li><a href='#/logout'>Logout</a></li>
+</ul>
+<hr>
+<div class='container'>
+<form ng-hide='editFlag' class="form" role="form" ng-submit="createWish(content)" novalidate>
+    <div class='form-group col-sm-9 col-md-9 col-lg-7'>
+        <textarea class="form-control" rows="2" ng-model='content' placeholder='CREATE YOUR NEW COMMENT :)'>{{ editValue }}</textarea>
+
+    </div>
+    <div class='form-group col-sm-2 col-md-2 col-lg-2'>
+        <button class='btn btn-success btn-sm' type='submit' style='width:100%;'><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comments</button>
+    </div>
+</form>
+<form ng-show='editFlag' class="form" role="form" ng-submit="updateWish(updatedId, updatedContent)" novalidate>
+    <div class='form-group col-sm-8 col-md-8 col-lg-7'>
+        <textarea class="form-control" rows="2" ng-model='updatedContent'>{{ updatedContent }}</textarea>
+    </div>
+    <div class='form-group col-sm-4 col-md-4 col-lg-3'>
+        <button class='btn btn-warning btn-sm' type='submit' style='width:100%;'><span class="glyphicon glyphicon-plus"></span> UPDATE</button>
+        <button class='btn btn-primary btn-sm' ng-click='cancelEditMode()' style='width:100%;'><span class="glyphicon glyphicon-th-list"></span> BACK </button>
+    </div>
+</form>
+
+</div>
+<hr>
+<div class="panel panel-success">
+    <div class="panel-heading">Comments List</div>
+    <div class="panel-body" ng-repeat-start='wish in wishList | reverse'>
+        {{ wish.content }}
+        <small> {{ wish.modifiedTime }} </small>
+    </div>
+    <div class="panel-footer" ng-repeat-end>
+        <div>
+            <button type="button" class="btn btn-warning" ng-click="enterEditMode($index, wish._id, wish.content, wish.interest)">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+            </button>
+            <button type="button" class="btn btn-danger" ng-click="removeWish(wish._id)">
+                <span class="glyphicon glyphicon-remove"></span> Remove
+            </button>
+        </div>
+    </div>
+</div>
+</div>
